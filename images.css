@@ -1,0 +1,586 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General Body Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Header Container: Logo + Cell, Socials, Login, Cart */
+.header-container {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  width: 100%;
+  margin-top: 37.8px;
+  padding: 10px;
+  justify-content: space-between;
+  background-image: url('boostspeaker.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.logo {
+  width: 160px;
+  height: auto;
+  z-index: 1;
+}
+
+/* Header Right */
+.header-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 20px;
+  z-index: 1;
+}
+
+/* Header Items Layout */
+.cell-number {
+  font-size: 14px;
+  color: #000;
+  margin-right: 15px;
+}
+
+.socials a {
+  color: #000;
+  margin-right: 10px;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.socials a:hover {
+  color: #2980b9;
+}
+
+.login-button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #2980b9;
+}
+
+.cart {
+  font-size: 24px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+/* Nav Button Styling */
+.nav-button {
+  background-color: #fff;
+  color: #ff1900;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.nav-button:hover {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+/* Search Button Styling */
+.search-button {
+  background-color: #fff;
+  color: #e74c3c;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.search-button:hover {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+/* Grid container for items */
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 20px;
+}
+
+.item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.item img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.item h3 {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+}
+
+.item p {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.item a {
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.item a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Media Queries */
+@media (max-width: 480px) {
+  body {
+      padding-top: 100px; /* Adjust top padding for header */
+  }
+
+  .header-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .header-right {
+      margin-top: 10px;
+  }
+
+  .nav-button {
+      font-size: 16px;
+      padding: 8px 16px;
+      margin: 10px 0;
+  }
+
+  .cart {
+      font-size: 20px;
+  }
+
+  .search-box, .search-button {
+      width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0 20px;
+  }
+
+  .nav-button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 5px;
+  }
+
+  .header-right {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+
+  .search-box, .search-button {
+      width: 70%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .product {
+      width: 22%;
+  }
+
+  .logo {
+      width: 170px;
+  }
+}
+
+/* Mobile first */
+body {
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
+  color: #333;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 1rem;
+}
+
+.top-line {
+  width: 100%;
+  height: 20px;
+  background-color: #ff1900;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.black-line {
+  width: 100%;
+  height: 1.5cm;
+  background-color: rgb(22, 4, 93);
+  position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.search-box {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 250px;
+  color: #333;
+}
+
+.search-button {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.search-button:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.below-logo {
+  width: 100%;
+  height: 100px;
+  background-color: #ff1900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-button {
+  background-color: #fff;
+  color: #ff1900;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.nav-button:hover {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+      display: block;
+  }
+
+  .below-logo {
+      display: none;
+  }
+
+  .hamburger-menu.active + .below-logo {
+      display: block;
+  }
+}
+/* Hamburger Menu (Mobile) */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 28px;
+  margin-left: 10px; /* Move it next to the Items button */
+  color: black; /* Make the hamburger icon black */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hamburger-menu {
+      display: block;
+      color: black; /* Ensure it's black on mobile as well */
+  }
+}
+/* White Box Styling */
+.header-box {
+  position: fixed;
+  top: 20px; /* Space from top of the page */
+  left: 50%;
+  transform: translateX(-50%); /* Centers the box horizontally */
+  width: 80%; /* Set a specific width to make it smaller */
+  max-width: 1200px; /* Maximum width for larger screens */
+  height: 60px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between logo and navigation */
+  padding: 0 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+/* Logo Styling */
+.logo {
+  width: 40px; /* Adjust as per your logo size */
+  height: auto;
+  margin-right: 20px; /* Space between logo and navigation */
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: center; /* Center navigation links */
+  width: 100%;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 28px;
+  color: black; /* Make the hamburger icon black */
+  margin-left: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hamburger-menu {
+      display: block;
+      color: black; /* Ensure it's black on mobile as well */
+  }
+
+  /* Reposition the hamburger to the right of the items */
+  .nav-buttons {
+      flex: 1; /* Take up the available space */
+      justify-content: flex-end; /* Align the buttons to the right */
+  }
+
+  .header-box {
+      width: 90%; /* Make the box a bit wider on mobile */
+      padding: 0 15px;
+  }
+
+  .nav-button {
+      font-size: 16px; /* Smaller font size on mobile */
+  }
+}
+/* White Box Styling */
+.header-box {
+  position: fixed;
+  top: 20px; /* Space from top of the page */
+  left: 50%;
+  transform: translateX(-50%); /* Centers the box horizontally */
+  width: 80%; /* Set a specific width to make it smaller */
+  max-width: 1200px; /* Maximum width for larger screens */
+  height: 60px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between logo and navigation */
+  padding: 0 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+/* Logo Styling */
+.logo {
+  width: 60px; /* Adjust logo width to be a bit bigger */
+  height: auto;
+  margin-right: 20px; /* Space between logo and navigation */
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: center; /* Center navigation links */
+  width: 100%;
+}
+
+.nav-button {
+  margin: 0 20px; /* Spacing between the links */
+  font-size: 18px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.nav-button:hover {
+  color: #3498db;
+}
+
+/* Hamburger Menu (Mobile) */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 28px;
+  color: black; /* Make the hamburger icon black */
+  margin-left: 10px; /* Move it next to the Items button */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hamburger-menu {
+      display: block;
+      color: black; /* Ensure it's black on mobile as well */
+  }
+
+  /* Reposition the hamburger to the right of the items */
+  .nav-buttons {
+      flex: 1; /* Take up the available space */
+      justify-content: flex-end; /* Align the buttons to the right */
+  }
+
+  .header-box {
+      width: 90%; /* Make the box a bit wider on mobile */
+      padding: 0 15px;
+  }
+
+  .nav-button {
+      font-size: 16px; /* Smaller font size on mobile */
+  }
+}
+.nav-buttons.show {
+  display: block; /* Show the menu when toggled */
+}
+
+@media (max-width: 768px) {
+  .nav-buttons {
+      display: none; /* Hide menu by default on mobile */
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-color: white;
+      border-radius: 5px;
+      padding: 10px;
+  }
+}
+/* Mobile Menu Toggle */
+.nav-buttons.active {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .nav-buttons {
+      display: none;
+      flex-direction: column;
+      text-align: center;
+      width: 100%;
+      position: absolute;
+      top: 60px; /* Below the header */
+      background-color: white;
+  }
+
+  .nav-buttons.active {
+      display: flex;
+  }
+
+  .nav-button {
+      padding: 10px;
+      font-size: 18px;
+      color: #333;
+      text-decoration: none;
+  }
+
+  .nav-button:hover {
+      color: #3498db;
+  }
+}
+/* Set background image for the entire body */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('your-image.jpg'); /* Replace with the path to your image */
+  background-size: cover; /* Ensure the image covers the entire page */
+  background-position: center center; /* Center the image */
+  background-attachment: fixed; /* Keep the background fixed while scrolling */
+  color: #333;
+  overflow-x: hidden;
+  height: 100vh;
+}

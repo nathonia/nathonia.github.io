@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .product-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .product-image {
+            flex: 1;
+            max-width: 500px;
+            margin-right: 20px;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .product-info {
+            flex: 2;
+            max-width: 500px;
+        }
+
+        .product-info p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        .quantity {
+            margin-bottom: 20px;
+        }
+
+        .quantity label {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .quantity input {
+            width: 60px;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .product-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product-info {
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .product-image {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Speakers</h1>
+
+    <div class="product-container">
+        <!-- Product Image -->
+        <div class="product-image">
+            <img src="PowerBass-speaker.png" alt="Pioneer Speakers">
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+            <p>Power Bass Pioneer Speakers</p>
+            <p class="price">R1000</p>
+
+            <!-- Quantity Input -->
+            <div class="quantity">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1">
+            </div>
+
+            <!-- Add to Cart Button -->
+            <button id="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle the "Add to Cart" button
+        document.getElementById("add-to-cart").addEventListener("click", function() {
+            const quantity = document.getElementById("quantity").value;
+            const productName = "{{ product.name }}";
+            const productPrice = "{{ product.price }}";
+
+            // Example of adding to cart (just logging for now)
+            console.log(`Added ${quantity} ${productName} to the cart at $${productPrice} each.`);
+
+            // You can add further functionality here like sending the data to your server
+            // or updating a cart in the browser.
+        });
+    </script>
+
+</body>
+</html>

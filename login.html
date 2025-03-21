@@ -1,0 +1,40 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<form method="POST" action="{{ url_for('login') }}">
+    {{ form.hidden_tag() }} <!-- CSRF token for security -->
+    
+    <!-- Username Field -->
+    <div class="mb-3"> <!-- Bootstrap 5 uses 'mb-3' for margin-bottom -->
+        <label for="username" class="form-label">{{ form.username.label }}</label>
+        {{ form.username(class="form-control", placeholder="Enter your username", id="username") }}
+        
+        {% if form.username.errors %}
+            <div class="alert alert-danger mt-2">
+                {% for error in form.username.errors %}
+                    <p class="mb-0">{{ error }}</p> <!-- Remove extra margin from individual errors -->
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Password Field -->
+    <div class="mb-3">
+        <label for="password" class="form-label">{{ form.password.label }}</label>
+        {{ form.password(class="form-control", placeholder="Enter your password", id="password") }}
+        
+        {% if form.password.errors %}
+            <div class="alert alert-danger mt-2">
+                {% for error in form.password.errors %}
+                    <p class="mb-0">{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Submit Button -->
+    <div class="mb-3">
+        {{ form.submit(class="btn btn-primary", value="Login") }}
+    </div>
+</form>

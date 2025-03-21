@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <script src="https://js.stripe.com/v3/"></script> <!-- Load the latest Stripe.js -->
+    <style>
+        /* Optional: Add some basic styling */
+        #payment-form {
+            width: 400px;
+            margin: 0 auto;
+        }
+        #card-errors {
+            color: red;
+        }
+        #submit:disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <h1>Checkout</h1>
+
+    <!-- Display total price dynamically -->
+    <p>Total Amount: <span id="total-price">R1000</span></p>
+
+    <form id="payment-form" action="/charge" method="POST">
+        <div id="card-element">
+            <!-- A Stripe Element will be inserted here. -->
+        </div>
+
+        <!-- Used to display form errors. -->
+        <div id="card-errors" role="alert"></div>
+
+        <!-- Submit Button -->
+        <button id="submit" type="submit">Pay R1000</button>
+    </form>
+
+    <script>
+        // Set your publishable key here
+        const stripe = Stripe("{{ stripe_publishable_key }}");  // Pass your publishable key from backend
+        const elements = stripe.elements();
+        
+        // Create an instance of the card Element
+        const card = elements.create("card");
+
+        // Add the card Element to the DOM
+        card.mount("#card-element");
+
+        // Handle real-time validation errors from the card Element.
+        card.on("change", (event) => {
+            const displayError = document.getElementById("card-errors");
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = "";
+            }
+        });
+
+        // Handle form submission
+        const form = document.getElementById("payment-form");
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            // Disable the submit button to prevent multiple submissions
+            const submitButton = document.getElementById("submit");
+            submitButton.disabled = true;
+            submitButton.textContent = "Processing...";
+
+            const {token, error} = await stripe.createToken(card);
+
+            if (error) {
+                // Inform the user if there was an error
+                const errorElement = document.getElementById("card-errors");
+                errorElement.textContent = error.message;
+
+                // Re-enable the submit button
+                submitButton.disabled = false;
+                submitButton.textContent = "Pay ${{ total_amount }}";
+            } else {
+                // Send the token to your server
+                const hiddenInput = document.createElement("input");
+                hiddenInput.setAttribute("type", "hidden");
+                hiddenInput.setAttribute("name", "stripeToken");
+                hiddenInput.setAttribute("value", token.id);
+                form.appendChild(hiddenInput);
+
+                // Submit the form to the server
+                form.submit();
+            }
+        });
+    </script>
+</body>
+</html>
